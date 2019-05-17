@@ -24,8 +24,8 @@
 	<h1 class="text-primary"><center>Cloud <small class="text-muted">CS 3220</small></center></h1><br>
 	
 	<form action="Cloud.jsp"><center>
-		<input type="text" name="username" placeholder="Username" /><br>	
-		<input type="password" name="password" placeholder="Password"><br><br>
+		<input type="text" name="username" placeholder="Username" value="${param.username}"/><br>	
+		<input type="password" name="password" placeholder="Password" value ="${param.password}"><br><br>
 		<input class="btn btn-outline-success" type="submit" name="submitbtn" value="Sign In"><br>
 		<hr width="35%"></hr>
 	</form>
