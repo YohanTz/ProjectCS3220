@@ -47,14 +47,14 @@
 	</c:if>
 	
 	<c:if test="${entries.rowCount == 1}">
-		<c:redirect url = "http://localhost:8080/cs3220stu111/Cloud/Session.jsp"/>
+		<c:redirect url = "http://localhost:8080/cs3220stu123/Cloud/Session.jsp"/>
 	</c:if>
 	
 
 	<c:if test="${not empty param.newusername}">
 	<c:if test="${not empty param.newpassword}">
 			<sql:update>
-				INSERT INTO users VALUES ("${param.newusername}","${param.newpassword}")
+				INSERT INTO users VALUES (0, "${param.newusername}","${param.newpassword}")
 			</sql:update> 
 	</c:if>
 	</c:if>
