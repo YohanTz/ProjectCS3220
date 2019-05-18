@@ -43,7 +43,7 @@
   		</c:forEach>
 	</table>
 	
-		<form action="../Upload" method="post" enctype="multipart/form-data">
+		<form action="Upload" method="post" enctype="multipart/form-data">
 		
 			<div class="input-group">
 			  	<div class="custom-file">

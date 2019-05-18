@@ -126,18 +126,18 @@ public class Upload extends HttpServlet {
 	            c = DriverManager.getConnection( url, username, password );
 	            
 	            // String sql = "INSERT INTO files (id, path, owner_id) VALUES (0," + fileDir + "/"  + (String) servletContext.getAttribute("fileName") + ", " + "1)";
-            String sql = "INSERT INTO files(path, name, owner_id) VALUES(" + fileDir + "/" 
-	        + (String) servletContext.getAttribute("fileName") + ", " 
-	        + (String) servletContext.getAttribute("fileName") + ", "
-	        + (int) servletContext.getAttribute("id");
+            String sql = "INSERT INTO files(path, name, owner_id) VALUES(\"" + fileDir + "/" 
+	        + (String) servletContext.getAttribute("fileName") + "\", \"" 
+	        + (String) servletContext.getAttribute("fileName") + "\", \""
+	        + (int) servletContext.getAttribute("id") + "\")";
 	            
             System.out.println("Query: " + sql);
 	            
-	            PreparedStatement pstmt = c.prepareStatement(sql);
+	        PreparedStatement pstmt = c.prepareStatement(sql);
 	            
 	            
-	            int numberOfRowsAffected = pstmt.executeUpdate();
-	            out.println(numberOfRowsAffected);
+	        int numberOfRowsAffected = pstmt.executeUpdate();
+	        out.println(numberOfRowsAffected);
 	        }
 	        catch( SQLException e )
 	        {
@@ -163,7 +163,7 @@ public class Upload extends HttpServlet {
 			}
         }
         
-        response.sendRedirect("session.jsp");
+        response.sendRedirect("Session.jsp");
     }
 
 }

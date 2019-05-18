@@ -1,4 +1,4 @@
-package Cloud;
+package ProjectCS3220;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -59,8 +60,10 @@ public class Login extends HttpServlet {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		
-boolean hasError = false;
+		boolean hasError = false;
 		
+        ServletContext servletContext = this.getServletConfig().getServletContext();
+
 		if (username == null || username.trim().length() == 0) {
 			hasError = true;
 			request.setAttribute("nameError", "You must enter your username");
@@ -97,7 +100,7 @@ boolean hasError = false;
 				            stmt = c.createStatement();
 				            ResultSet rs = stmt.executeQuery("SELECT id FROM users WHERE username = \""+username+"\"");
 				            rs.next();
-				            request.setAttribute("id",  rs.getString("id"));
+				            servletContext.setAttribute("id",  rs.getInt("id"));
 				            
 				            }
 				            

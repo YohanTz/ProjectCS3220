@@ -1,4 +1,4 @@
-package Cloud;
+package ProjectCS3220;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -60,7 +60,7 @@ public class Register extends HttpServlet {
 		
 		if (password == null || password.trim().length() == 0) {
 			hasError = true;
-			request.setAttribute("nameError", "You must a password");
+			request.setAttribute("nameError", "You must have a password");
 		}
 		
 		
