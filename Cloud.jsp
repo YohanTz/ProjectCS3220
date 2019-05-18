@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
+<jsp:useBean id="Ub" class="Cloud.UserBean" scope="application" />
 
 <sql:setDataSource
 	driver="com.mysql.jdbc.Driver"
@@ -23,24 +24,16 @@
 	
 	<h1 class="text-primary"><center>Cloud <small class="text-muted">CS 3220</small></center></h1><br>
 	
-	<form action="Cloud.jsp"><center>
+	<form action="Login" method="post"><center>
 		<input type="text" name="username" placeholder="Username" value="${param.username}"/><br>	
 		<input type="password" name="password" placeholder="Password" value ="${param.password}"><br><br>
-		
-			<%-- Gestion des erreurs --%> 
-	
-	<c:if test="${empty param.username}">
-		<p>Username is empty !</p>
-	</c:if>
-	<c:if test="${empty param.username}">
-		<p>Password is empty !</p>
-	</c:if>
-		
-		
 		<input class="btn btn-outline-success" type="submit" name="submitbtn" value="Sign In"><br>
 		<hr width="35%"></hr>
 	</form>
 	
+	<c:if test="${ not empty nameError }">
+		<p>${ nameError }</p>
+	</c:if>
 	
 	<form action="Register.jsp">
 		<input class="btn btn-outline-primary" type="submit" name="submitbtn" value="Create an account">
@@ -49,26 +42,7 @@
 	
 	</div>
 
-	<c:if test="${not empty param.username}">
-	<c:if test="${not empty param.password}">
-			<sql:query var="entries">
-				SELECT * FROM users WHERE username = "${param.username}" AND password = "${param.password}"
-			</sql:query> 
-	</c:if>
-	</c:if>
-	
-	<c:if test="${entries.rowCount == 1}">
-		<c:redirect url = "http://localhost:8080/cs3220stu102/Cloud/Session.jsp"/>
-	</c:if>
-	
 
-	<c:if test="${not empty param.newusername}">
-	<c:if test="${not empty param.newpassword}">
-			<sql:update>
-				INSERT INTO users VALUES (0, "${param.newusername}","${param.newpassword}")
-			</sql:update> 
-	</c:if>
-	</c:if>
 	
 </body>
 </html>

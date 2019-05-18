@@ -2,13 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
+<jsp:useBean id="Ub" class="Cloud.UserBean" scope="application" />
 
-<sql:setDataSource
-	driver="com.mysql.jdbc.Driver"
-	url="jdbc:mysql://cs3.calstatela.edu/cs3220stu111"
-	user="cs3220stu111"
-	password="iMG2nvUI" />
-	
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,24 +16,18 @@
 
 	<h1 class="text-primary"><center>Cloud <small class="text-muted">CS 3220</small></center></h1><br>
 	
-	<form action="Cloud.jsp"><center>
+	<form action="Register" method="post"><center>
 		<input type="text" name="newusername" placeholder="Choose a username" /><br>	
 		<input type="password" name="newpassword" placeholder="Choose a password"><br><br>
 		<input class="btn btn-outline-primary" type="submit" name="submitbtn" value="Register"><br>
 	</form>
 	
-	<c:if test="${not empty param.username}">
-	<c:if test="${not empty param.password}">
-			<sql:query var="entries">
-				SELECT * FROM users WHERE username = "${param.username}" 
-			</sql:query> 
-			<c:if test="${entries.rowCount == 0}">
-				<sql:update>
-					INSERT INTO users VALUES ("${param.username}","${param.password}")
-				</sql:update> 
-			</c:if>
+	<c:if test="${ not empty nameError }">
+		<p>${ nameError }</p>
 	</c:if>
-	</c:if>
+	
+	
+
 
 </body>
 </html>
