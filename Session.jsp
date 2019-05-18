@@ -9,6 +9,10 @@
 	user="cs3220stu111"
 	password="iMG2nvUI" />
 	
+<sql:query var="items">
+ 	select name from files where owner_id = ${id}
+</sql:query>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,6 +29,19 @@
 		<div class="jumbotron my-4">
 			<h1 class="display-4">Your Files</h1>
 		</div>
+	
+	<table class="table table-bordered table-striped table-hover">
+  		<c:forEach items="${items.columnNames}" var="col">
+			<td>${col}</td>
+		</c:forEach>
+		<c:forEach items="${items.rowsByIndex}" var="row">
+			<tr>
+			<c:forEach items="${row}" var="col">      
+				    <td>${col}</td>
+			</c:forEach>
+			</tr>
+  		</c:forEach>
+	</table>
 	
 		<form action="../Upload" method="post" enctype="multipart/form-data">
 		
