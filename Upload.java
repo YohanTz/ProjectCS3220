@@ -126,7 +126,7 @@ public class Upload extends HttpServlet {
 	            c = DriverManager.getConnection( url, username, password );
 	            
 	            // String sql = "INSERT INTO files (id, path, owner_id) VALUES (0," + fileDir + "/"  + (String) servletContext.getAttribute("fileName") + ", " + "1)";
-            String sql = "INSERT INTO files(path, owner_id) VALUES(" + fileDir + "/" 
+            String sql = "INSERT INTO files(path, name, owner_id) VALUES(" + fileDir + "/" 
 	        + (String) servletContext.getAttribute("fileName") + ", " 
 	        + (String) servletContext.getAttribute("fileName") + ", "
 	        + (int) servletContext.getAttribute("id");
