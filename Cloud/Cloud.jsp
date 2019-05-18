@@ -26,9 +26,21 @@
 	<form action="Cloud.jsp"><center>
 		<input type="text" name="username" placeholder="Username" value="${param.username}"/><br>	
 		<input type="password" name="password" placeholder="Password" value ="${param.password}"><br><br>
+		
+			<%-- Gestion des erreurs --%> 
+	
+	<c:if test="${empty param.username}">
+		<p>Username is empty !</p>
+	</c:if>
+	<c:if test="${empty param.username}">
+		<p>Password is empty !</p>
+	</c:if>
+		
+		
 		<input class="btn btn-outline-success" type="submit" name="submitbtn" value="Sign In"><br>
 		<hr width="35%"></hr>
 	</form>
+	
 	
 	<form action="Register.jsp">
 		<input class="btn btn-outline-primary" type="submit" name="submitbtn" value="Create an account">
@@ -37,7 +49,6 @@
 	
 	</div>
 
-	
 	<c:if test="${not empty param.username}">
 	<c:if test="${not empty param.password}">
 			<sql:query var="entries">
@@ -47,7 +58,7 @@
 	</c:if>
 	
 	<c:if test="${entries.rowCount == 1}">
-		<c:redirect url = "http://localhost:8080/cs3220stu123/Cloud/Session.jsp"/>
+		<c:redirect url = "http://localhost:8080/cs3220stu102/Cloud/Session.jsp"/>
 	</c:if>
 	
 

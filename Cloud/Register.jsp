@@ -28,9 +28,14 @@
 	
 	<c:if test="${not empty param.username}">
 	<c:if test="${not empty param.password}">
-			<sql:update>
-				INSERT INTO users VALUES ("${param.username}","${param.password}")
-			</sql:update> 
+			<sql:query var="entries">
+				SELECT * FROM users WHERE username = "${param.username}" 
+			</sql:query> 
+			<c:if test="${entries.rowCount == 0}">
+				<sql:update>
+					INSERT INTO users VALUES ("${param.username}","${param.password}")
+				</sql:update> 
+			</c:if>
 	</c:if>
 	</c:if>
 
