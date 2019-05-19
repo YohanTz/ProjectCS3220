@@ -47,7 +47,7 @@ public class Upload extends HttpServlet {
     protected void doGet( HttpServletRequest request,
         HttpServletResponse response ) throws ServletException, IOException
     {
-    	request.getRequestDispatcher("/WEB-INF/views/session.jsp").forward(request,  response);
+    	request.getRequestDispatcher("/WEB-INF/views/Session.jsp").forward(request,  response);
     }
 
     protected void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException
@@ -115,9 +115,6 @@ public class Upload extends HttpServlet {
 
         response.setContentType( "text/html" );
         PrintWriter out = response.getWriter();
-        out.println( "<html><head><title>Upload</title></head><body>" );
-        out.println( "<p>" + count + " file(s) uploaded to " + fileDir );
-        out.println( "</body></html>" );
         
         if(count >= 1) {
 	        Connection c = null;
@@ -135,9 +132,8 @@ public class Upload extends HttpServlet {
 	            
 	        PreparedStatement pstmt = c.prepareStatement(sql);
 	            
-	            
 	        int numberOfRowsAffected = pstmt.executeUpdate();
-	        out.println(numberOfRowsAffected);
+	        
 	        }
 	        catch( SQLException e )
 	        {
